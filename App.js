@@ -1,27 +1,38 @@
 import React from "react";
 import useFetch from "./useFetch";
-import "./index.css";
 
-export default function App() {
-  const { data, loading, error } = useFetch("https://api.escuelajs.co/api/v1/products");
+function App() {
+  const { data, loading, error } = useFetch(
+    "https://jsonplaceholder.typicode.com/posts"
+  );
 
   return (
-    <div className="container">
-      <h1>React Custom Hook: useFetch</h1>
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h1>React Custom Hook – Data Fetching</h1>
 
-      {loading && <p className="loading">Loading...</p>}
-      {error && <p className="error">{error}</p>}
+      {loading && <p>Loading data...</p>}
+      {error && <p style={{ color: "red" }}>Error: {error}</p>}
 
-      <div className="grid">
-        {data &&
-          data.slice(0, 12).map((p) => (
-            <div key={p.id} className="card">
-              <img src={p.images[0]} alt={p.title} />
-              <h3>{p.title}</h3>
-              <p>₹ {p.price}</p>
+      {data && (
+        <div>
+          {data.slice(0, 5).map((item) => (
+            <div
+              key={item.id}
+              style={{
+                border: "1px solid #ccc",
+                padding: "10px",
+                marginBottom: "10px",
+                borderRadius: "8px",
+              }}
+            >
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
             </div>
           ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }
+
+export default App;
