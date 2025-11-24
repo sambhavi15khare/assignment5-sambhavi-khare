@@ -12,3 +12,4 @@ The project is built using Create React App and includes a reusable custom hook 
 - Clean, modular code structure
 - Conditional rendering (loading, error, success states)
 - Responsive basic UI
+https://dainty-capybara-9cc331.netlify.app/
